@@ -3,10 +3,10 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const inputEl = document.querySelector('#datetime-picker');
 const btnEl = document.querySelector('[data-start]');
-const secondsEl = document.querySelector('data-seconds');
-const minutesEl = document.querySelector('data-seconds');
-const hoursEl = document.querySelector('data-seconds');
-const daysEl = document.querySelector('data-seconds');
+const secondsEl = document.querySelector('[data-seconds]');
+const minutesEl = document.querySelector('[data-seconds]');
+const hoursEl = document.querySelector('[data-seconds]');
+const daysEl = document.querySelector('[data-seconds]');
 
 const currentMiliseconds = Date.now();
 let formatDate = null;
