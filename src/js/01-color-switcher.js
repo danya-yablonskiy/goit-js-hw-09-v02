@@ -5,7 +5,7 @@ const btnStopEl = document.querySelector('[data-stop');
 let generateId = null;
 
 function getRandomHexColor() {
-    return '#${Math.floor(Math.random() * 16777215).toString(16)}';
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
 btcStartEl.addEventListener('click', onStartGenerateColor);
@@ -22,4 +22,3 @@ function onStopGenerateColor(){
     btcStartEl.disabled = false;
     btnStopEl.disabled = true;
 }
-console.log(1)
