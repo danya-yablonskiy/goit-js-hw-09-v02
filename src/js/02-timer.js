@@ -8,10 +8,10 @@ const minutesEl = document.querySelector('span[data-seconds]');
 const hoursEl = document.querySelector('span[data-seconds]');
 const daysEl = document.querySelector('span[data-seconds]');
 
-const currentMiliseconds = Date.now();
+
 btnEl.setAttribute(`disabled`, true);
 btnEl.addEventListener('click', onStartTimer);
-let choosingDate = 0;
+let choosingDate = null;
 let timerId = null;
 
 const options = {
@@ -44,21 +44,20 @@ inputEl.setAttribute(`disabled`, true);
 }
 
 function startTimer(){
-  let differentDate = choosingDate - currentMiliseconds;
-  let formatDate = convertMs(differentDate);
-  renderDate(formatDate);
-
+  const differentDate = choosingDate - Date.now();
+  const formatDate = convertMs(differentDate);
+  renderDate(formatDate)
   if (differentDate === 0) {
     window.alert('Time end');
     clearInterval(timerId);
 }
 }
 
-function renderDate(formatDate){
-secondsEl.textContent = formatDate.seconds;
-minutesEl.textContent = formatDate.minutes;
-hoursEl.textContent = formatDate.hours;
-daysEl.textContent = formatDate.days;
+function renderDate({ days, hours, minutes, seconds }){
+secondsEl.textContent = addLeadingZero(seconds);
+minutesEl.textContent = addLeadingZero(minutes);
+hoursEl.textContent = addLeadingZero(hours);
+daysEl.textContent = addLeadingZero(days);
 }
 
 
@@ -74,13 +73,13 @@ function convertMs(ms) {
   const day = hour * 24;
 
   // Remaining days
-  const days = addLeadingZero(Math.floor(ms / day));
+  const days = Math.floor(ms / day);
   // Remaining hours
-  const hours = addLeadingZero(Math.floor((ms % day) / hour));
+  const hours = Math.floor((ms % day) / hour);
   // Remaining minutes
-  const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
+  const minutes = Math.floor(((ms % day) % hour) / minute);
   // Remaining seconds
-  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
 }
