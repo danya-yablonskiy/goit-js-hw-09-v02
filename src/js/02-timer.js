@@ -14,7 +14,7 @@ let differentDate = 0;
 btnEl.setAttribute(`disabled`, true);
 btnEl.addEventListener('click', onStartTimer);
 let choosingDate = 0;
-
+let timerId = null;
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -49,8 +49,12 @@ function startTimer(){
   differentDate = choosingDate - currentMiliseconds;
   formatDate = convertMs(differentDate);
   renderDate(formatDate);
-}
 
+  if (secondsEl.textContent <= 0 && minutesEl.textContent <= 0) {
+    window.alert('Time end');
+    clearInterval(timerId);
+}
+}
 function renderDate(formatDate){
 secondsEl.textContent = formatDate.seconds;
 minutesEl.textContent = formatDate.minutes;
