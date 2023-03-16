@@ -48,7 +48,7 @@ function startTimer(){
   let formatDate = convertMs(differentDate);
   renderDate(formatDate);
 
-  if (differentDate = 0) {
+  if (differentDate === 0) {
     window.alert('Time end');
     clearInterval(timerId);
 }
