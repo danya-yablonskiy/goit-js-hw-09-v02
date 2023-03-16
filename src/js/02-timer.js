@@ -9,8 +9,6 @@ const hoursEl = document.querySelector('span[data-seconds]');
 const daysEl = document.querySelector('span[data-seconds]');
 
 const currentMiliseconds = Date.now();
-let formatDate = null;
-let differentDate = 0;
 btnEl.setAttribute(`disabled`, true);
 btnEl.addEventListener('click', onStartTimer);
 let choosingDate = 0;
@@ -46,11 +44,11 @@ inputEl.setAttribute(`disabled`, true);
 }
 
 function startTimer(){
-  differentDate = choosingDate - currentMiliseconds;
-  formatDate = convertMs(differentDate);
+  let differentDate = choosingDate - currentMiliseconds;
+  let formatDate = convertMs(differentDate);
   renderDate(formatDate);
 
-  if (secondsEl.textContent <= 0 && minutesEl.textContent <= 0) {
+  if (differentDate = 0) {
     window.alert('Time end');
     clearInterval(timerId);
 }
