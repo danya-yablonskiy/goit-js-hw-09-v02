@@ -2,11 +2,11 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
 const inputEl = document.querySelector('#datetime-picker');
-const btnEl = document.querySelector('[data-start]');
-const secondsEl = document.querySelector('[data-seconds]');
-const minutesEl = document.querySelector('[data-seconds]');
-const hoursEl = document.querySelector('[data-seconds]');
-const daysEl = document.querySelector('[data-seconds]');
+const btnEl = document.querySelector('button[data-start]');
+const secondsEl = document.querySelector('span[data-seconds]');
+const minutesEl = document.querySelector('span[data-seconds]');
+const hoursEl = document.querySelector('span[data-seconds]');
+const daysEl = document.querySelector('span[data-seconds]');
 
 const currentMiliseconds = Date.now();
 let formatDate = null;
@@ -15,8 +15,6 @@ btnEl.setAttribute(`disabled`, true);
 btnEl.addEventListener('click', onStartTimer);
 let choosingDate = 0;
 let timerId = null;
-
-
 
 const options = {
     enableTime: true,
@@ -39,7 +37,6 @@ const options = {
   if (selectedDates>=Date.now()) {
     btnEl.removeAttribute('disabled');
   };
-
   };
 
 function onStartTimer(){
@@ -58,6 +55,7 @@ function startTimer(){
     clearInterval(timerId);
 }
 }
+
 function renderDate(formatDate){
 secondsEl.textContent = formatDate.seconds;
 minutesEl.textContent = formatDate.minutes;
