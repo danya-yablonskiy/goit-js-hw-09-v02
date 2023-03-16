@@ -15,6 +15,9 @@ btnEl.setAttribute(`disabled`, true);
 btnEl.addEventListener('click', onStartTimer);
 let choosingDate = 0;
 let timerId = null;
+
+
+
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -40,7 +43,7 @@ const options = {
   };
 
 function onStartTimer(){
-const timerId = setInterval(startTimer, 1000);
+timerId = setInterval(startTimer, 1000);
 btnEl.setAttribute(`disabled`, true);
 inputEl.setAttribute(`disabled`, true);
 }
